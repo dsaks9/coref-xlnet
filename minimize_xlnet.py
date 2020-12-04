@@ -243,7 +243,7 @@ if __name__ == "__main__":
   stats = collections.defaultdict(int)
   if not os.path.isdir(output_dir):
     os.mkdir(output_dir)
-  for seg_len in [128, 256, 384, 512]:
+  for seg_len in [128, 256, 384, 512, 640, 768]:
     minimize_language("english", labels, stats, spiece_model_file, seg_len, input_dir, output_dir, do_lower_case)
     # minimize_language("chinese", labels, stats, vocab_file, seg_len)
     # minimize_language("es", labels, stats, vocab_file, seg_len)
