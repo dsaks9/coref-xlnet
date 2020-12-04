@@ -25,19 +25,18 @@ The following shows an example of using train_xlnet.py to finetune XLNet for cor
 ```
 os.environ['data_dir'] = "../xlnet_data_dir/"
 
-! GPU=0 python train_xlnet.py train_xlnet_640 \
+! GPU=0 python train_xlnet.py train_xlnet_768 \
   --do_train=True \
   --do_eval=False \
   --uncased=False \
   --spiece_model_file=$data_dir/xlnet_cased_L-12_H-768_A-12/spiece.model \
   --model_config_path=$data_dir/xlnet_cased_L-12_H-768_A-12/xlnet_config.json \
   --init_checkpoint=$data_dir/xlnet_cased_L-12_H-768_A-12/xlnet_model.ckpt \
-  --max_seq_length=640 \
+  --max_seq_length=768 \
   --num_hosts=1 \
   --num_core_per_host=1 \
   --learning_rate=5e-05 \
   --train_steps=80000 \
   --warmup_steps=500 \
-  --save_steps=500 \
   --dropout=0.2 
 ```
