@@ -47,6 +47,7 @@ def output_conll(input_file, output_file, predictions, subtoken_map):
         word_index = 0
       output_file.write(line)
       output_file.write("\n")
+      #print(line)
     else:
       assert get_doc_key(row[0], row[1]) == doc_key
       coref_list = []
@@ -67,10 +68,13 @@ def output_conll(input_file, output_file, predictions, subtoken_map):
 
       output_file.write("   ".join(row))
       output_file.write("\n")
+      #print("   ".join(row))
       word_index += 1
 
 def official_conll_eval(gold_path, predicted_path, metric, official_stdout=False):
-  cmd = ["conll-2012/scorer/v8.01/scorer.pl", metric, gold_path, predicted_path, "none"]
+  cmd = ["perl", "conll-2012/scorer/v8.01/scorer.pl", metric, gold_path, predicted_path, "none"]
+  #cmd = ["perl", "conll-2012/scorer/v8.01/scorer.pl", metric, gold_path, predicted_path]
+
   process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
   stdout, stderr = process.communicate()
   process.wait()
